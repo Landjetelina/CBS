@@ -1,4 +1,3 @@
-import lowLevel
 from lowLevel2 import *
 from grid2 import *
 import time
