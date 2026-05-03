@@ -11,7 +11,7 @@ def create_forbidden_nodes(row_start=None, row_end=None, column_start=None, colu
 
 if __name__ == '__main__':
     start_time = time.time()
-    N = 30
+    N = 5
     forbidden_nodes = []
     # for i in range(N):
     #     if i % 4 == 1:
@@ -22,7 +22,7 @@ if __name__ == '__main__':
     grid = Grid(N, N, forbidden_nodes)
     print(grid)
 
-    lowLevel = LowLevel(grid, (0, 0), (29,29))
+    lowLevel = LowLevel(grid, (0, 0), (4,4))
     solution = lowLevel.return_path()
     print(solution)
     end_time = time.time()

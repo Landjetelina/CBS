@@ -11,18 +11,18 @@ class Grid:
     def set_weight(self, i, j, cost):
         self.flat_tree_list[i][j] = cost
 
-    def get_neighbours(self, i, j):
+    def get_neighbours(self, i, j, time):
         if not self.flat_tree_list[i][j]:
             return None
         if i > 0 and self.flat_tree_list[i-1][j]:
-            yield (i-1,j)
+            yield (i-1,j,time+1)
         if j > 0 and self.flat_tree_list[i][j-1]:
-            yield (i,j-1)
-        yield (i,j)
+            yield (i,j-1,time+1)
+        yield (i,j,time+1)
         if j+1 < self.column and self.flat_tree_list[i][j+1]:
-            yield (i,j+1)
+            yield (i,j+1,time+1)
         if i+1 < self.row and self.flat_tree_list[i+1][j]:
-            yield (i+1,j)
+            yield (i+1,j,time+1)
 
     def __str__(self):
         string = ''
