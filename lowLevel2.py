@@ -1,8 +1,8 @@
 from copy import deepcopy
 import heapq
 import math
-
 from grid2 import *
+from sortedcontainers import SortedList
 
 class LowLevel:
     def __init__(self, grid: Grid, start_point, end_point):
@@ -11,23 +11,21 @@ class LowLevel:
         self.end_point: tuple[int, int] = end_point
 
         self._nodes_expanded = 0
-        self._visited_nodes = {self.start_point: 0}
+        # self._visited_nodes = {self.start_point: 0}
 
     def heuristic_fn(self, node: tuple[int, int]):  # Manhattan distance
         value = abs(self.end_point[0] - node[0]) + abs(self.end_point[1] - node[1])
-        if node in self._visited_nodes:
-            value *= 10**self._visited_nodes[node]
+        # if node in self._visited_nodes:
+        #     value *= 10**self._visited_nodes[node]
         return value
 
     def a_star(self):
         # [0] is total cost + heuristic, [1] is Node, [2] is total cost, [3] is list that contains parent node
         curr_node: list[tuple[int,int] | int | None] = [self.heuristic_fn(self.start_point), self.start_point, 0, None]
-        open_nodes = []
+        open_nodes, closed_nodes = [], SortedList()
         while True:
             self._nodes_expanded += 1
             if curr_node[1] in self._visited_nodes:
-                # if self._visited_nodes[curr_node[1]] > 1:
-                #     continue
                 self._visited_nodes[curr_node[1]] += 1
             else:
                 self._visited_nodes[curr_node[1]] = 1

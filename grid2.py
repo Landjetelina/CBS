@@ -1,4 +1,16 @@
-from functools import total_ordering
+import select
+from scipy.sparse import coo
+
+
+class Pair:
+    def __init__(self, row, column):
+        self.row = row
+        self.col = column
+    def __eq__(self, other):
+        return isinstance(other, Pair)
+    def __lt__(self, other):
+
+
 
 class Grid:
     def __init__(self, row, column, forbidden_nodes=None, weight=1):
@@ -11,18 +23,18 @@ class Grid:
     def set_weight(self, i, j, cost):
         self.flat_tree_list[i][j] = cost
 
-    def get_neighbours(self, i, j, time):
+    def get_neighbours(self, i, j):
         if not self.flat_tree_list[i][j]:
             return None
         if i > 0 and self.flat_tree_list[i-1][j]:
-            yield (i-1,j,time+1)
+            yield (i-1,j)
         if j > 0 and self.flat_tree_list[i][j-1]:
-            yield (i,j-1,time+1)
-        yield (i,j,time+1)
+            yield (i,j-1)
+        yield (i,j)
         if j+1 < self.column and self.flat_tree_list[i][j+1]:
-            yield (i,j+1,time+1)
+            yield (i,j+1)
         if i+1 < self.row and self.flat_tree_list[i+1][j]:
-            yield (i+1,j,time+1)
+            yield (i+1,j)
 
     def __str__(self):
         string = ''
