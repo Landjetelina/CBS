@@ -1,6 +1,6 @@
 import random
 from grid import *
-# new
+
 def create_forbidden_grid(row_start=None, row_end=None, column_start=None, column_end=None):
     lista = []
     for i in range(row_start, row_end+1):

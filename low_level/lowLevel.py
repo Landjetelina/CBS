@@ -47,12 +47,18 @@ class LowLevel:
 
     # returns a solution of A*
     def return_path(self):
-        solution = self.a_star()
-        curr_node = solution
-        path = []
+        curr_node = self.a_star()
+        path, total_cost = [], curr_node[2]
         while curr_node is not None:
-            path.append(str(curr_node[1]))  # node is at index 1
+            path.append(curr_node[1])  # node is at index 1
             curr_node = curr_node[3]  # next node is parent node
         path.reverse()  # path should be reversed in order to go from start to finish
+        return path, total_cost
+
+    def path2str(self, path, total_cost=None):
+        path = [str(node) for node in path]
         string = " --> ".join(path)
-        return f'Total cost: {solution[2]}\nNodes expanded: {self._nodes_expanded}\n{string}'
+        if total_cost:
+            return f'Total cost: {total_cost}\nNodes expanded: {self._nodes_expanded}\n{string}'
+        else:
+            return string
