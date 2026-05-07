@@ -10,6 +10,8 @@ class Node:
         if isinstance(other, Node):
             return self.row == other.row and self.col == other.col
         return False
+    def __hash__(self):
+        return hash((self.row, self.col))
     # nodes that have higher row value and higher column value will have priority
     def __lt__(self, other):
         if isinstance(other, Node):

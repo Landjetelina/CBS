@@ -7,7 +7,7 @@ from low_level import createMaze
 
 if __name__ == '__main__':
     start_time = time.time()
-    n, start_point, end_point = 11, Node(8,8), Node(0,0)
+    n, start_point, end_point = 10, Node(9,9), Node(0,0)
 
     forbidden_nodes: list[Node] = [Node(0,1), Node(1,0)]
     # forbidden_nodes.extend(createMaze.create_snake(n))
