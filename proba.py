@@ -1,2 +1,3 @@
-a = [2, 3]
-print(a.pop(0))
+s = {2, 3, 4}
+a = list(s)
+print(a)

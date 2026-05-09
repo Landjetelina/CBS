@@ -1,5 +1,5 @@
 import random
-from grid import *
+from low_level.grid import *
 
 def create_forbidden_grid(row_start=None, row_end=None, column_start=None, column_end=None):
     lista = []

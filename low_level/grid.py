@@ -1,6 +1,5 @@
 from functools import total_ordering
 
-
 @total_ordering
 class Node:
     def __init__(self, row, column):
@@ -25,16 +24,20 @@ class Node:
 
 
 class Grid:
-    def __init__(self, row, column, forbidden_nodes=None, weight=1):
+    def __init__(self, row, column, forbidden_nodes=[], weight=1):
         self.row = row  # number of grid rows
         self.column = column  # number of grid columns
         self.forbidden_nodes:list[Node] = sorted(forbidden_nodes)  # represents an obstacle
 
         # contains node weights
-        self.flat_tree_list = [[weight if (i, j) not in self.forbidden_nodes
-                                else None for i in range(self.column) ] for j in range(self.row)]
-    def set_weight(self, i, j, cost):
-        self.flat_tree_list[i][j] = cost
+        self.flat_tree_list = []
+        for i in range(self.row):
+            self.flat_tree_list.append([weight if Node(i, j) not in self.forbidden_nodes
+                                        else None for j in range(self.column)])
+        # self.flat_tree_list = [[weight if Node(i, j) not in self.forbidden_nodes
+        #                         else None for i in range(self.column)] for j in range(self.row)]
+    def set_weight(self, i, j, weight):
+        self.flat_tree_list[i][j] = weight
 
 
     # returns neighbouring nodes
