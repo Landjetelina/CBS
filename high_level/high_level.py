@@ -3,6 +3,7 @@ from functools import total_ordering
 import heapq as hp
 from itertools import combinations
 
+
 from low_level.lowLevel import Constraint
 
 sys.path.append(os.path.join(os.getcwd(), 'low_level'))
@@ -52,25 +53,43 @@ class ConstraintTree:
             found_conflict = False
             for a1, a2 in combinations(agents_list, 2):
                 path_set1, path_set2 = dict_of_path_sets[a1], dict_of_path_sets[a2]
-                conflicts = path_set1 & path_set2
-                if not conflicts:
-                    continue
+                v_confls = path_set1 & path_set2   # vertex conflicts
+                swap_confl_left, swap_confl_right = None, None
+                if not v_confls:
+                    # no vertex conflict detected, checks swap conflict
+                    path_list1 = sorted(list(path_set1), key=lambda x: x[1])
+                    path_list2 = sorted(list(path_set2), key=lambda x: x[1])
+                    for i in range(len(path_list1)-1):
+                        if len(path_list2)-1 == i:  # path2 is shorter than path1, we got to an end and found no conflicts
+                            break
+                        start_p1, next_p1 = path_list1[i], path_list1[i+1]
+                        start_p2, next_p2 = path_list2[i], path_list2[i+1]
+                        if start_p1[0] == next_p2[0] and next_p1[0] == start_p2[0]:
+                            swap_confl_left = next_p1
+                            swap_confl_right = next_p2
+                            break
+                    if not swap_confl_left and not swap_confl_right:
+                        continue
                 found_conflict = True
-                conflict = list(conflicts)[0]
-
                 curr_node.left_child, curr_node.right_child = Node(), Node()
-                curr_node.left_child.constraint_set = curr_node.constraint_set | {Constraint(a1, *conflict)}
-                curr_node.left_child.sol_dict = {a: path
-                                       for a, points in self.agent_dict.items()
+
+                if v_confls:
+                    v_confl = list(v_confls)[0]
+                    curr_node.left_child.constraint_set = curr_node.constraint_set | {Constraint(a1, *v_confl)}
+                    curr_node.right_child.constraint_set = curr_node.constraint_set | {Constraint(a2, *v_confl)}
+                else:
+                    curr_node.left_child.constraint_set = curr_node.constraint_set | {Constraint(a1, *swap_confl_left)}
+                    curr_node.right_child.constraint_set = curr_node.constraint_set | {Constraint(a2, *swap_confl_right)}
+
+                curr_node.left_child.sol_dict = {a: path for a, points in self.agent_dict.items()
                                         if (path := self.low_level.return_path(*points, curr_node.left_child.constraint_set, a))}
                 hp.heappush(open_nodes_hp, curr_node.left_child)
 
-                curr_node.right_child.constraint_set = curr_node.constraint_set | {Constraint(a2, *conflict)}
-                curr_node.right_child.sol_dict = {a: path
-                                       for a, points in self.agent_dict.items()
-                                       if (path := self.low_level.return_path(*points, curr_node.right_child.constraint_set, a))}
+                curr_node.right_child.sol_dict = {a: path for a, points in self.agent_dict.items()
+                                        if (path := self.low_level.return_path(*points, curr_node.right_child.constraint_set, a))}
                 hp.heappush(open_nodes_hp, curr_node.right_child)
-            if not found_conflict:
-                # return curr_node.sol_dict
-                solution = curr_node.sol_dict
-        return solution
+
+            if not found_conflict and len(curr_node.sol_dict.keys()) == len(self.agent_dict.keys()):
+                return curr_node.sol_dict
+                # solution = curr_node.sol_dict
+        # return solution

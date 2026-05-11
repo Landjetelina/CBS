@@ -18,7 +18,6 @@ class LowLevel:
         self._nodes_expanded = 0
 
 
-
     def a_star(self, start_point, end_point, constraints=None, agent=None):
         def heuristic_fn(node: Node):  # Manhattan distance
             value = abs(end_point.row - node.row) + abs(end_point.col - node.col)
