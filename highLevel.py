@@ -2,13 +2,12 @@ import sys, os
 from functools import total_ordering
 import heapq as hp
 from itertools import combinations
-
-
-from low_level.lowLevel import Constraint
+from lowLevel import Constraint
 
 sys.path.append(os.path.join(os.getcwd(), 'low_level'))
+import grid as grd
+import lowLevel
 
-from low_level import createMaze, grid as grd, lowLevel
 
 @total_ordering
 class Node:
@@ -37,18 +36,17 @@ class ConstraintTree:
         self.agent_dict = agent_dict
         self.low_level = lowLevel.LowLevel(grid)
 
-
     def treeWalk(self):
         self.root = Node(set())
         self.root.sol_dict = {a:self.low_level.return_path(*points) for a, points in self.agent_dict.items()}
         open_nodes_hp: list[Node] = [self.root]
-        solution = None
         while open_nodes_hp:
             curr_node = open_nodes_hp.pop(0)
-
-            dict_of_path_sets = {agent: set(path) for agent, path in curr_node.sol_dict.items()}
+            dict_of_path_sets = dict()
+            for agent, path in curr_node.sol_dict.items():
+                if path:
+                    dict_of_path_sets[agent] = set(path)
             agents_list = list(dict_of_path_sets.keys())
-
 
             found_conflict = False
             for a1, a2 in combinations(agents_list, 2):
@@ -89,7 +87,5 @@ class ConstraintTree:
                                         if (path := self.low_level.return_path(*points, curr_node.right_child.constraint_set, a))}
                 hp.heappush(open_nodes_hp, curr_node.right_child)
 
-            if not found_conflict and len(curr_node.sol_dict.keys()) == len(self.agent_dict.keys()):
+            if not found_conflict and len(curr_node.sol_dict.values()) == len(self.agent_dict.values()):
                 return curr_node.sol_dict
-                # solution = curr_node.sol_dict
-        # return solution

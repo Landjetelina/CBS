@@ -22,7 +22,6 @@ class Node:
     def __str__(self):
         return f'{self.row},{self.col}'
 
-
 class Grid:
     def __init__(self, row, column, forbidden_nodes=[], weight=1):
         self.row = row  # number of grid rows
@@ -34,11 +33,8 @@ class Grid:
         for i in range(self.row):
             self.flat_tree_list.append([weight if Node(i, j) not in self.forbidden_nodes
                                         else None for j in range(self.column)])
-        # self.flat_tree_list = [[weight if Node(i, j) not in self.forbidden_nodes
-        #                         else None for i in range(self.column)] for j in range(self.row)]
     def set_weight(self, i, j, weight):
         self.flat_tree_list[i][j] = weight
-
 
     # returns neighbouring nodes
     def get_neighbours(self, node: Node):
@@ -64,7 +60,7 @@ class Grid:
                 else:
                     string += f'{f"{i},{j}":^5}  '
             string += '\n'
-        return string
+        return string[:-1]
 
     # Grid 3x3 with forbidden (1,1)
         # +y --->
