@@ -30,10 +30,17 @@ class LowLevel:
             self._nodes_expanded += 1
             closed_nodes_set.add(curr_node[1])
             # iterator that contains at most 5 neighbouring nodes (upper, left, itself, right, lower)
-            neighbours = self.grid.get_neighbours(curr_node[1])
+            neighbours = list(self.grid.get_neighbours(curr_node[1]))
             new_nodes = []  # isn't neccessary, put for debugging purposes, neighbours could be appended directly to an open nodes list
+            next_to_constr = False
             for neighbour_node in neighbours:
-                if neighbour_node in closed_nodes_set: # node is already visited
+                if (constraints and Constraint(agent, neighbour_node, curr_node[2]
+                    + self.grid.flat_tree_list[neighbour_node.row][neighbour_node.col]) in constraints):
+                    next_to_constr = True
+                    closed_nodes_set = set()
+                    break
+            for neighbour_node in neighbours:
+                if neighbour_node in closed_nodes_set and not next_to_constr: # node is already visited
                     continue
                 cost = self.grid.flat_tree_list[neighbour_node.row][neighbour_node.col]
                 total_cost = curr_node[2] + cost
@@ -44,12 +51,14 @@ class LowLevel:
                 new_nodes.append([heuristic_fn(neighbour_node) + curr_node[2] + cost,
                                 neighbour_node, total_cost, curr_node])
             for node in new_nodes:
-                if node[1] not in open_nodes_set:
+                if node[1] not in open_nodes_set or next_to_constr:
                     open_nodes_list.add(node)
                     open_nodes_set.add(node[1])
             if not open_nodes_list:  # if heap becomes empty, it means that we have visited every available node and couldn't find solution
                 return None
             next_node = open_nodes_list.pop(0)
+            if next_node[1] in open_nodes_set:
+                open_nodes_set.remove(next_node[1])
             if next_node[1] == end_point:  # checks if the goal is found
                 return next_node
             curr_node = next_node

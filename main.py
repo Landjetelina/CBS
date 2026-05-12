@@ -2,7 +2,6 @@ import time
 import test_examples
 from high_level.high_level import *
 from low_level.lowLevel import *
-from low_level.grid import *
 
 from animate import MultiAgentAnimator
 
@@ -21,7 +20,9 @@ def convert_paths(sol_dict):
 
 if __name__ == '__main__':
     start_time = time.time()
-    n, agent_dict, forbidden_nodes, grid = test_examples.create_example_5()
+    # =========== CHANGE TEST EXAMPLE HERE: ==================
+    n, agent_dict, forbidden_nodes, grid = test_examples.create_example_9()
+
     print(grid)
     sol_dict = ConstraintTree(agent_dict, grid).treeWalk()
     for agent, path in sol_dict.items():
@@ -32,10 +33,7 @@ if __name__ == '__main__':
     print(f'{"="*20}')
     print(f'Time elapsed: {time.time() - start_time:.3f}')
 
-    # ==========================================
-    # ANIMACIJA
-    # ==========================================
-
+    # Animation
     paths = convert_paths(sol_dict)
     animator = MultiAgentAnimator(
         paths=paths,
