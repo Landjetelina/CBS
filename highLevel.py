@@ -2,13 +2,12 @@ import sys, os
 from functools import total_ordering
 import heapq as hp
 from itertools import combinations
-
-
-from low_level.lowLevel import Constraint
+from lowLevel import Constraint
 
 sys.path.append(os.path.join(os.getcwd(), 'low_level'))
+import grid as grd
+import lowLevel
 
-from low_level import createMaze, grid as grd, lowLevel
 
 @total_ordering
 class Node:
@@ -36,7 +35,6 @@ class ConstraintTree:
         self.root: Node = None
         self.agent_dict = agent_dict
         self.low_level = lowLevel.LowLevel(grid)
-
 
     def treeWalk(self):
         self.root = Node(set())

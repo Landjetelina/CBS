@@ -1,10 +1,10 @@
 import sys, os
 from typing import NamedTuple
 
-
 sys.path.append(os.path.join(os.getcwd(), 'low_level'))
-from low_level.grid import *
+from grid import *
 from sortedcontainers import SortedList
+
 
 class Constraint(NamedTuple):
     a: str  # agent
@@ -16,7 +16,6 @@ class LowLevel:
         self.grid = grid
 
         self._nodes_expanded = 0
-
 
     def a_star(self, start_point, end_point, constraints=None, agent=None):
         def heuristic_fn(node: Node):  # Manhattan distance
@@ -63,7 +62,7 @@ class LowLevel:
                 return next_node
             curr_node = next_node
 
-    # returns a solution of A*
+    # returns the solution of A*
     def return_path(self, start_node: Node, end_node: Node, constraints=None, agent=None):
         curr_node = self.a_star(start_node, end_node, constraints, agent)
         if not curr_node:
@@ -81,6 +80,6 @@ class LowLevel:
         path = [f'{str(node[0])} {node[1]}' for node in path]
         str_path = " --> ".join(path)
         if total_cost:
-            return f'Total cost: {total_cost}\nNodes expanded: {nodes_expanded}\n{str_path}'
+            return f'Total cost: {total_cost}\n{str_path}' # Nodes expanded: {nodes_expanded}\n
         else:
             return str_path

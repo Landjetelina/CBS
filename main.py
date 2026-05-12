@@ -1,13 +1,12 @@
 import time
-import test_examples
-from high_level.high_level import *
-from low_level.lowLevel import *
+import testExamples
+from highLevel import *
+from lowLevel import *
 
 from animate import MultiAgentAnimator
 
 
 def convert_paths(sol_dict):
-
     paths = {}
     for agent, solution in sol_dict.items():
         path = solution
@@ -20,8 +19,10 @@ def convert_paths(sol_dict):
 
 if __name__ == '__main__':
     start_time = time.time()
-    # =========== CHANGE TEST EXAMPLE HERE: ==================
-    n, agent_dict, forbidden_nodes, grid = test_examples.create_example_9()
+
+    # =========== CHANGE TEST EXAMPLE HERE: ==============================
+    n, agent_dict, forbidden_nodes, grid = testExamples.create_example_1()
+    # ====================================================================
 
     print(grid)
     sol_dict = ConstraintTree(agent_dict, grid).treeWalk()

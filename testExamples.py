@@ -1,8 +1,8 @@
 import random as rnd
 
-from high_level.high_level import *
-from low_level.lowLevel import *
-from low_level.grid import *
+import createMaze
+from highLevel import *
+from grid import *
 
 
 def create_example_1():
@@ -45,15 +45,15 @@ def create_example_4():
 def create_example_5():
     # 4 agents, corner swap, huge empty grid = 100x100
     n = 100
-    agent_dict = {'a1': (Node(0,0), Node(99,99)), 'a2': (Node(99,99), Node(0,0))}
-                  # 'a3': (Node(0,99), Node(99,0)), 'a4': (Node(99,0), Node(0,99))}
+    agent_dict = {'a1': (Node(0,0), Node(99,99)), 'a2': (Node(99,99), Node(0,0)),
+                  'a3': (Node(0,99), Node(99,0)), 'a4': (Node(99,0), Node(0,99))}
     forbidden_nodes = []
     grid = Grid(n, n, forbidden_nodes)
     return n, agent_dict, forbidden_nodes, grid
 
 def create_example_6():
-    # random chaos!!! grid = 20x20
-    n, k, a = 20, 10, 10  # grid, obstacles agents
+    # random chaos!!! grid = 20x20, 10 agents
+    n, k, a = 20, 25, 10  # grid, obstacles, agents
     agents = [f'a{i}' for i in range(1, a+1)]
     agent_dict = dict()
     for a in agents:
@@ -96,15 +96,20 @@ def create_example_8():
     return n, agent_dict, forbidden_nodes, grid
 
 def create_example_9():
-    # 3 agents, tests swap collision and if agents can go backwards to avoid collision
+    # 3 agents, cross map
     n = 5
     agent_dict = {'a1': (Node(0,2), Node(4,2)), 'a2': (Node(4,2), Node(0,2)),
                   'a3': (Node(2,0), Node(2,4))} # ,'a4': (Node(2,4), Node(2,0))
     forbidden_nodes = []
-    forbidden_nodes.extend(createMaze.create_forbidden_grid(0,1,0,1))
-    forbidden_nodes.extend(createMaze.create_forbidden_grid(0,1,3,4))
-    forbidden_nodes.extend(createMaze.create_forbidden_grid(3,4,0,1))
-    forbidden_nodes.extend(createMaze.create_forbidden_grid(3,4,3,4))
+    forbidden_nodes.extend(createMaze.create_forbidden_grid(0, 1, 0, 1))
+    forbidden_nodes.extend(createMaze.create_forbidden_grid(0, 1, 3, 4))
+    forbidden_nodes.extend(createMaze.create_forbidden_grid(3, 4, 0, 1))
+    forbidden_nodes.extend(createMaze.create_forbidden_grid(3, 4, 3, 4))
 
     grid = Grid(n, n, forbidden_nodes)
+    return n, agent_dict, forbidden_nodes, grid
+
+# ================ CREATE YOUR OWN EXAMPLE: =====================
+def create_example_10():
+    n, agent_dict, forbidden_nodes, grid = None, None, None, None
     return n, agent_dict, forbidden_nodes, grid

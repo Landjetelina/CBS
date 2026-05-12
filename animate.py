@@ -122,7 +122,6 @@ class MultiAgentAnimator:
             self.btn_play.ax.set_facecolor("red")
             self.btn_play.ax.patch.set_facecolor("red")
             self.btn_play.color = "red"
-            self.btn_play.hovercolor = "darkred"
             self.btn_play.label.set_text("Pause")
             self.btn_play.label.set_color("white")
         else:
@@ -200,7 +199,7 @@ class MultiAgentAnimator:
     def restart_animation(self, event):
         self.playing = True
         self.current_step = 0
-        # reset trailova
+        # reset trails
         for trail in self.agent_trails.values():
             trail.set_data([], [])
         self.update_agents()
