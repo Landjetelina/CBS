@@ -70,6 +70,17 @@ Program also creates a GUI where agents are animated and user can view each step
   <img width="677" height="659" alt="20260512-2100-36 2960092 (2)" src="https://github.com/user-attachments/assets/64b6618c-bbaa-4a07-ba82-d6b53c657eaa" /><br>
 *Animation of the example 6* <br>
 
+---
+## Contributors 
+This project has been made at Faculty of Electrical engineering and Computing, University of Zagreb, Croatia.
+### Author
+Patrik Landeka 
+- patrik.landeka@unizg.fer.hr
+### Mentor
+Tamara Petrović
+
+## Sources
+- https://www.sciencedirect.com/science/article/pii/S0004370214001386?ref=pdf_download&fr=RR-2&rr=9fac96f46b4aec1a
 
 
 
