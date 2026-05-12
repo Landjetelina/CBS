@@ -62,7 +62,7 @@ Program also creates a GUI where agents are animated and user can view each step
   <img width="586" height="483" alt="image" src="https://github.com/user-attachments/assets/e9325b70-dff3-4e67-82f2-2f82bec1c545" /><br>
 *Solution of the example 1* <br>
 
-  <img width="586" height="483" alt="20260512-2120-33 9732189" src="https://github.com/user-attachments/assets/8a6e6bc4-d8ce-4eab-8e52-77671ed21cce" /><br>
+  <img width="586" height="483" alt="20260512-2128-00 7649589" src="https://github.com/user-attachments/assets/f57fbf41-366d-492e-aafd-8a00c661484b" /><br>
 *Animation of the example 1* <br>
 
 ### Example 6
