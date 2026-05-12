@@ -1,4 +1,4 @@
 # Implementation of Conflict Based Search (CBS) algorithm for Multi Agent Path Finding (MAPF) problem
 
-Finished low level of Conflict based search (CBS) algorithm <br>
-Implemented A* algorithm that uses Manhattan distance heuristic. Added closed nodes list that makes agent unable to go back, conflict may not be possible to avoid in some situations. In the future it should be allowed to revisit the same nodes if that helps to resolve a conflict.
+## CBS Algorithm
+CBS is an algorithm that works on two levels, high level and low level. Low level finds individual solution for each agent with A* algorithm using Manhattan heuristic function. High level detects possible collisions and creates a constraint tree which is responsible for avoiding collisions. 
