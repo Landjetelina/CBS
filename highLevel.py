@@ -44,6 +44,8 @@ class ConstraintTree:
         open_nodes_hp: list[Node] = [self.root]
         while open_nodes_hp:
             self.nodes_expanded += 1
+            # algorithm changes performance drastically if this line is changed to pop()
+            # solution is found much quicker, but algorithm is greedy, it rarely produces an optimal solution
             curr_node = open_nodes_hp.pop(0)
             dict_of_path_sets = dict()
             for agent, path in curr_node.sol_dict.items():

@@ -21,7 +21,7 @@ if __name__ == '__main__':
     start_time = time.time()
 
     # =========== CHANGE TEST EXAMPLE HERE: ==============================
-    n, agent_dict, forbidden_nodes, grid = testExamples.create_example_4()
+    n, agent_dict, forbidden_nodes, grid = testExamples.create_example_10()
     # ====================================================================
 
     print(grid)

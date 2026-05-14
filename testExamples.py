@@ -8,6 +8,7 @@ from grid import *
 def create_example():
     n, agent_dict, forbidden_nodes, grid = None, None, None, None
     return n, agent_dict, forbidden_nodes, grid
+# ===============================================================
 
 def create_example_1():
     # simple example from the book, grid 4x4 two agents
@@ -27,18 +28,22 @@ def create_example_2():
     return n, agent_dict, forbidden_nodes, grid
 
 def create_example_3():
-    # 2 agents, tests swap collision and if agent can wait to avoid collision
+    # 3 agents, cross map
     n = 5
-    agent_dict = {'a1': (Node(0,0), Node(0,4)), 'a2': (Node(1,2), Node(0,0))}
-    forbidden_nodes = [Node(2, 2)]
-    forbidden_nodes.extend(createMaze.create_forbidden_grid(1, 1, 0, 1))
-    forbidden_nodes.extend(createMaze.create_forbidden_grid(1, 1, 3, 4))
+    agent_dict = {'a1': (Node(0,2), Node(4,2)), 'a2': (Node(4,2), Node(0,2)),
+                  'a3': (Node(2,0), Node(2,4))} # ,'a4': (Node(2,4), Node(2,0))
+    forbidden_nodes = []
+    forbidden_nodes.extend(createMaze.create_forbidden_grid(0, 1, 0, 1))
+    forbidden_nodes.extend(createMaze.create_forbidden_grid(0, 1, 3, 4))
+    forbidden_nodes.extend(createMaze.create_forbidden_grid(3, 4, 0, 1))
+    forbidden_nodes.extend(createMaze.create_forbidden_grid(3, 4, 3, 4))
+
     grid = Grid(n, n, forbidden_nodes)
     return n, agent_dict, forbidden_nodes, grid
 
 def create_example_4():
     # random chaos!!! grid = 20x20, 10 agents
-    n, k, a = 20, 40, 10  # grid, obstacles, agents
+    n, k, a = 20, 30, 10  # grid, obstacles, agents
     agents = [f'a{i}' for i in range(1, a+1)]
     agent_dict = dict()
     for a in agents:
@@ -58,7 +63,6 @@ def create_example_4():
             forbidden_nodes.add(obstacle)
     grid = Grid(n, n, forbidden_nodes)
     return n, agent_dict, forbidden_nodes, grid
-
 
 def create_example_5():
     # 4 agents, corner swap, huge empty grid = 100x100
@@ -100,16 +104,12 @@ def create_example_8():
     return n, agent_dict, forbidden_nodes, grid
 
 def create_example_9():
-    # 3 agents, cross map
+    # 2 agents, tests swap collision and if agent can wait to avoid collision
     n = 5
-    agent_dict = {'a1': (Node(0,2), Node(4,2)), 'a2': (Node(4,2), Node(0,2)),
-                  'a3': (Node(2,0), Node(2,4))} # ,'a4': (Node(2,4), Node(2,0))
-    forbidden_nodes = []
-    forbidden_nodes.extend(createMaze.create_forbidden_grid(0, 1, 0, 1))
-    forbidden_nodes.extend(createMaze.create_forbidden_grid(0, 1, 3, 4))
-    forbidden_nodes.extend(createMaze.create_forbidden_grid(3, 4, 0, 1))
-    forbidden_nodes.extend(createMaze.create_forbidden_grid(3, 4, 3, 4))
-
+    agent_dict = {'a1': (Node(0,0), Node(0,4)), 'a2': (Node(1,2), Node(0,0))}
+    forbidden_nodes = [Node(2, 2)]
+    forbidden_nodes.extend(createMaze.create_forbidden_grid(1, 1, 0, 1))
+    forbidden_nodes.extend(createMaze.create_forbidden_grid(1, 1, 3, 4))
     grid = Grid(n, n, forbidden_nodes)
     return n, agent_dict, forbidden_nodes, grid
 
