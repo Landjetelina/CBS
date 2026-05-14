@@ -56,7 +56,7 @@ Program outputs created grid, complete path and total cost for each agent. If th
 <br>
 Program also creates a GUI where agents are animated and user can view each step of the solution in discretisized moments. <br>
 <br>
-<img width="677" height="659" alt="20260514-1401-48 0490263" src="https://github.com/user-attachments/assets/3cfe48a5-e26d-40ed-acee-fc3f89389d0b" /><br>
+<img width="586" height="483" alt="20260514-1401-48 0490263" src="https://github.com/user-attachments/assets/3cfe48a5-e26d-40ed-acee-fc3f89389d0b" /><br>
 *Animation of the example 1* <br>
 
 
@@ -64,10 +64,9 @@ Program also creates a GUI where agents are animated and user can view each step
 
 <img width="586" height="483" alt="image" src="https://github.com/user-attachments/assets/5aac3f8b-9493-4a61-a9e4-b00c53bf2279" /><br>
 *Solution of the example 2* <br>
-*
-<br>
-  <img width="677" height="659" alt="20260512-2049-22 7860119" src="https://github.com/user-attachments/assets/5f62abb1-6d9f-4000-ba36-895c41ff96d9" /><br>
-*Animation of the example 3*
+
+  <img width="586" height="483" alt="20260512-2049-22 7860119" src="https://github.com/user-attachments/assets/5f62abb1-6d9f-4000-ba36-895c41ff96d9" /><br>
+*Animation of the example 2*
 
 ### Example 3
 
@@ -85,7 +84,7 @@ Program also creates a GUI where agents are animated and user can view each step
 ---
 ## Contributors 
 This project has been made at Faculty of Electrical engineering and Computing, University of Zagreb, Croatia.
-### Author
+### Publisher
 Patrik Landeka 
 - patrik.landeka@unizg.fer.hr
 ### Mentor
