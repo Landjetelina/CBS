@@ -45,30 +45,42 @@ This approach allows CBS to efficiently find collision-free solutions while pres
 3. Call function for creating an example in `main.py`
 
     <img width="326" height="193" alt="image" src="https://github.com/user-attachments/assets/0c5abfcf-4e3d-472e-b57e-1143bbe70386" />
+
 ## Results
 Program outputs created grid, complete path and total cost for each agent. If there is no solution, program will throw an exception. For some examples algorithm needs too much time and the program won't finish. <br>  
+
+### Example 1
+
+<img width="586" height="483" alt="image" src="https://github.com/user-attachments/assets/29c6cdd1-57c6-4feb-9e4e-0d4e02f9639a" /><br>
+*Solution of the example 1* <br>
+<br>
+Program also creates a GUI where agents are animated and user can view each step of the solution in discretisized moments. <br>
+<br>
+<img width="677" height="659" alt="20260514-1401-48 0490263" src="https://github.com/user-attachments/assets/3cfe48a5-e26d-40ed-acee-fc3f89389d0b" /><br>
+*Animation of the example 1* <br>
+
+
 ### Example 2
 
 <img width="586" height="483" alt="image" src="https://github.com/user-attachments/assets/5aac3f8b-9493-4a61-a9e4-b00c53bf2279" /><br>
 *Solution of the example 2* <br>
-<br>
-Program also creates a GUI where agents are animated and user can view each step of the solution in discretisized moments. <br>
+*
 <br>
   <img width="677" height="659" alt="20260512-2049-22 7860119" src="https://github.com/user-attachments/assets/5f62abb1-6d9f-4000-ba36-895c41ff96d9" /><br>
-*Animation of the example 2* <br>
+*Animation of the example 3*
 
-### Example 1
+### Example 3
 
   <img width="586" height="483" alt="image" src="https://github.com/user-attachments/assets/e9325b70-dff3-4e67-82f2-2f82bec1c545" /><br>
-*Solution of the example 1* <br>
+*Solution of the example 3* <br>
 
   <img width="586" height="483" alt="20260512-2128-00 7649589" src="https://github.com/user-attachments/assets/f57fbf41-366d-492e-aafd-8a00c661484b" /><br>
-*Animation of the example 1* <br>
+*Animation of the example 3* <br>
 
-### Example 6
+### Example 4
 
-  <img width="677" height="659" alt="20260512-2100-36 2960092 (2)" src="https://github.com/user-attachments/assets/64b6618c-bbaa-4a07-ba82-d6b53c657eaa" /><br>
-*Animation of the example 6* <br>
+  <img width="586" height="483" alt="Recording 2026-05-14 162838 (1)" src="https://github.com/user-attachments/assets/f9ca06ca-6328-4ad8-95af-d9d6fcda02f0" /><br>
+*Animation of the example 4* <br>
 
 ---
 ## Contributors 
