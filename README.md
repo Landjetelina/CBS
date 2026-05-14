@@ -70,10 +70,10 @@ Program also creates a GUI where agents are animated and user can view each step
 
 ### Example 3
 
-  <img width="586" height="483" alt="image" src="https://github.com/user-attachments/assets/e9325b70-dff3-4e67-82f2-2f82bec1c545" /><br>
+  <img width="586" height="483" alt="image" src="https://github.com/user-attachments/assets/6e6dc0f4-e722-4db2-850b-73d9b932782f" /><br>
 *Solution of the example 3* <br>
 
-  <img width="586" height="483" alt="20260512-2128-00 7649589" src="https://github.com/user-attachments/assets/f57fbf41-366d-492e-aafd-8a00c661484b" /><br>
+  <img width="586" height="483" alt="20260514-1555-01 6092698" src="https://github.com/user-attachments/assets/ccdc3ac7-54ad-4ee6-b42a-ab3ba0a02f4a" /><br>
 *Animation of the example 3* <br>
 
 ### Example 4
