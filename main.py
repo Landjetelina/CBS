@@ -21,7 +21,7 @@ if __name__ == '__main__':
     start_time = time.time()
 
     # =========== CHANGE TEST EXAMPLE HERE: ==============================
-    n, agent_dict, forbidden_nodes, grid = testExamples.create_example_9()
+    n, agent_dict, forbidden_nodes, grid = testExamples.create_example_4()
     # ====================================================================
 
     print(grid)
@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
     print(f'{"="*20}')
     print(f'Nodes expanded: {constr_tree.nodes_expanded}')
-    print(f'Time elapsed: {time.time() - start_time:.4f}')
+    print(f'Time elapsed: {time.time() - start_time:.3f}')
 
     # Animation
     paths = convert_paths(sol_dict)

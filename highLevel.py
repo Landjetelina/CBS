@@ -73,7 +73,6 @@ class ConstraintTree:
                         continue
                 found_conflict = True
                 curr_node.left_child, curr_node.right_child = Node(), Node()
-
                 if v_confls:
                     v_confl = list(v_confls)[0]
                     curr_node.left_child.constraint_set = curr_node.constraint_set | {Constraint(a1, *v_confl)}
