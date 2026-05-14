@@ -21,18 +21,20 @@ if __name__ == '__main__':
     start_time = time.time()
 
     # =========== CHANGE TEST EXAMPLE HERE: ==============================
-    n, agent_dict, forbidden_nodes, grid = testExamples.create_example_1()
+    n, agent_dict, forbidden_nodes, grid = testExamples.create_example_9()
     # ====================================================================
 
     print(grid)
-    sol_dict = ConstraintTree(agent_dict, grid).treeWalk()
+    constr_tree = ConstraintTree(agent_dict, grid)
+    sol_dict = constr_tree.treeWalk()
     for agent, path in sol_dict.items():
         print(f'{agent}\n{"-"*20}')
         print(LowLevel.path2str(path, nodes_expanded=path[1]))
         print()
 
     print(f'{"="*20}')
-    print(f'Time elapsed: {time.time() - start_time:.3f}')
+    print(f'Nodes expanded: {constr_tree.nodes_expanded}')
+    print(f'Time elapsed: {time.time() - start_time:.4f}')
 
     # Animation
     paths = convert_paths(sol_dict)

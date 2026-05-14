@@ -36,11 +36,14 @@ class ConstraintTree:
         self.agent_dict = agent_dict
         self.low_level = lowLevel.LowLevel(grid)
 
+        self.nodes_expanded = 0
+
     def treeWalk(self):
         self.root = Node(set())
         self.root.sol_dict = {a:self.low_level.return_path(*points) for a, points in self.agent_dict.items()}
         open_nodes_hp: list[Node] = [self.root]
         while open_nodes_hp:
+            self.nodes_expanded += 1
             curr_node = open_nodes_hp.pop(0)
             dict_of_path_sets = dict()
             for agent, path in curr_node.sol_dict.items():
